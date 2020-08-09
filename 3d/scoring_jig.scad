@@ -17,19 +17,28 @@
 include<flap_dimensions.scad>
 
 print_tolerance = 0.1;
-jig_thickness = 2.0;
-jig_border = 8.0;
+eps = 0.1;
+jig_thickness = 2.0; // Vertical thickness of the jig base
+jig_border = 8.0; // horizontal extent of the jig outside the flap size
+flap_slot_depth = 2 * flap_thickness; // depth of the recess the flap sits in
 
 ruler_width = 24.9;
 ruler_depth = 1.6;
+ruler_backstop_height = ruler_depth * 2;
 
-union() {
-    // Jig base
-    linear_extrude(height=jig_thickness) {
-
+difference() {
+    union() {
+        linear_extrude(height=jig_thickness + flap_slot_depth) {
+            square([jig_border*2 + print_tolerance * 2 + flap_width,jig_border*2 + print_tolerance + ruler_width + flap_height]);
+        }
+        linear_extrude(height=jig_thickness + flap_slot_depth + ruler_backstop_height) {
+            square(size=[jig_border*2 + print_tolerance * 2 + flap_width, jig_border]);
+        }
     }
-    // card guide
-    // ruler backstop
-
+    translate([jig_border - print_tolerance,-eps,jig_thickness]) {
+        linear_extrude(height=flap_slot_depth + ruler_backstop_height + eps) {
+            square([flap_width + 2 * print_tolerance, flap_height + print_tolerance + ruler_width + jig_border + eps]);
+        }
+    }
 }
 
