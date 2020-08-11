@@ -25,7 +25,7 @@ cutting_slot_width = 2.0; // Relief in the border for the blade to start and sto
 
 jig_width = jig_border*2 + print_tolerance * 2 + flap_width;
 
-ruler_width = 24.9;
+ruler_width = 24.6;
 ruler_depth = 1.6;
 ruler_backstop_height = ruler_depth * 2;
 
