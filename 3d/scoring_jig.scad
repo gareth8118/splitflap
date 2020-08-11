@@ -53,7 +53,7 @@ difference() {
                 square([jig_border + print_tolerance + eps, flap_height + print_tolerance + jig_border + eps]);
             }
         }
-        translate([-eps, jig_border + ruler_width, jig_thickness]) {
+        translate([-eps, jig_border + ruler_width - cutting_slot_width / 2, jig_thickness]) {
             // Relieve a slot for the blade to start and finish in
             linear_extrude(height=flap_slot_depth + eps) {
                 square([jig_width + 2*eps,cutting_slot_width]);
