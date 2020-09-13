@@ -23,8 +23,8 @@ clamp_inset = 0.4;
 
 punch_width = 26;
 punch_lower_height = 7.7;
-punch_gap_height = 2.5;
-slot_inset_depth = 9.3;
+punch_gap_height = 2.3;
+slot_inset_depth = 8.75;
 slot_depth = 3;
 slot_width = 15;
 
